@@ -15,6 +15,7 @@
     "watch": "rm -rf lib && babel src --out-dir lib --watch --source-maps-inline",
     "lint": "eslint -c=package.json",
     "test": "ava && npm run lint ./src",
+    "watch:test": "ava --watch",
     "start": "npm run build"
   },
   "repository": {
