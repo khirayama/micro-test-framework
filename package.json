@@ -11,8 +11,8 @@
   ],
   "scripts": {
     "prepublish": "npm test && npm run build",
-    "build": "babel src --out-dir lib --source-maps-inline",
-    "watch": "babel src --out-dir lib --watch --source-maps-inline",
+    "build": "rm -rf lib && babel src --out-dir lib --source-maps-inline",
+    "watch": "rm -rf lib && babel src --out-dir lib --watch --source-maps-inline",
     "lint": "eslint -c=package.json",
     "test": "ava && npm run lint ./src",
     "start": "npm run build"
@@ -51,7 +51,7 @@
   },
   "ava": {
     "files": [
-      "src/**/*.test.js"
+      "test/**/*.js"
     ],
     "require": [
       "babel-core/register"
