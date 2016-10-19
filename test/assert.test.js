@@ -78,7 +78,19 @@ test('_deepEqual > nested object', t => {
 });
 
 test('_deepEqual > array', t => {
-  const value = ['khirayama', 27];
+  const value = [
+    'khirayama', 27
+  ];
+
+  t.is(_deepEqual(value, [
+    'khirayama', 27
+  ]), true);
+  t.is(_deepEqual(value, [
+    'khirayama', '27'
+  ]), false);
+  t.is(_deepEqual(value, [
+    'khirayama', 27, 'ja'
+  ]), false);
 });
 
 test('_deepEqual > object array', t => {
@@ -93,4 +105,57 @@ test('_deepEqual > object array', t => {
     skills: ['ruby', 'other'],
     status: {language: 'en'}
   }];
+
+  t.is(_deepEqual(value, [{
+    name: 'khirayama',
+    age: 27,
+    skills: ['javascript', 'other'],
+    status: {language: 'ja'}
+  }, {
+    name: 'my friend',
+    age: 27,
+    skills: ['ruby', 'other'],
+    status: {language: 'en'}
+  }]), true);
+  t.is(_deepEqual(value, [{
+    name: 'khirayama',
+    age: 27,
+    skills: ['javascript', 'other'],
+    status: {language: 'ja'}
+  }, {
+    name: 'my friend',
+    age: '27',
+    skills: ['ruby', 'other'],
+    status: {language: 'en'}
+  }]), false);
+  t.is(_deepEqual(value, [{
+    name: 'khirayama',
+    age: 27,
+    skills: ['javascript', 'other'],
+    status: {language: 'ja', engineer: true}
+  }, {
+    name: 'my friend',
+    age: 27,
+    skills: ['ruby', 'other'],
+    status: {language: 'en'}
+  }]), false);
+});
+
+test('deepEqual', t => {
+  const value = {
+    name: 'khirayama',
+    age: 27,
+  };
+
+  t.is(_deepEqual(value, {
+    name: 'khirayama',
+    age: 27,
+  }), true);
+  t.throws(() => {
+    _deepEqual(value, {
+      name: 'khirayama',
+      age: '27',
+      birth: '02/06',
+    })
+  });
 });
