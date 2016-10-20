@@ -9,34 +9,34 @@ import {
 } from '../src/assert';
 
 test('_equl', t => {
-  const value = 'hello world';
+  const actual = 'hello world';
 
-  t.is(_equal(value, 'hello world'), true);
-  t.is(_equal(value, 'Hello world'), false);
+  t.is(_equal(actual, 'hello world'), true);
+  t.is(_equal(actual, 'Hello world'), false);
 });
 
 test('equl', t => {
-  const value = 'hello world';
+  const actual = 'hello world';
 
-  t.is(equal(value, 'hello world'), true);
-  t.throws(() => equal(value, 'Hello world'));
+  t.is(equal(actual, 'hello world'), true);
+  t.throws(() => equal(actual, 'Hello world'));
 });
 
 test('_deepEqual > object', t => {
-  const value = {
+  const actual = {
     name: 'khirayama',
     age: 27,
   };
 
-  t.is(_deepEqual(value, {
+  t.is(_deepEqual(actual, {
     name: 'khirayama',
     age: 27,
   }), true);
-  t.is(_deepEqual(value, {
+  t.is(_deepEqual(actual, {
     name: 'khirayama',
     age: '27',
   }), false);
-  t.is(_deepEqual(value, {
+  t.is(_deepEqual(actual, {
     name: 'khirayama',
     age: '27',
     birth: '02/06',
@@ -44,32 +44,32 @@ test('_deepEqual > object', t => {
 });
 
 test('_deepEqual > nested object', t => {
-  const value = {
+  const actual = {
     name: 'khirayama',
     age: 27,
     skills: ['javascript', 'other'],
     status: {language: 'ja'}
   };
 
-  t.is(_deepEqual(value, {
+  t.is(_deepEqual(actual, {
     name: 'khirayama',
     age: 27,
     skills: ['javascript', 'other'],
     status: {language: 'ja'}
   }), true);
-  t.is(_deepEqual(value, {
+  t.is(_deepEqual(actual, {
     name: 'khirayama',
     age: 27,
     skills: ['javascript', 'ruby'],
     status: {language: 'ja'}
   }), false);
-  t.is(_deepEqual(value, {
+  t.is(_deepEqual(actual, {
     name: 'khirayama',
     age: 27,
     skills: ['javascript', 'other'],
     status: {language: 'en'}
   }), false);
-  t.is(_deepEqual(value, {
+  t.is(_deepEqual(actual, {
     name: 'khirayama',
     age: 27,
     skills: ['javascript', 'other'],
@@ -78,23 +78,23 @@ test('_deepEqual > nested object', t => {
 });
 
 test('_deepEqual > array', t => {
-  const value = [
+  const actual = [
     'khirayama', 27
   ];
 
-  t.is(_deepEqual(value, [
+  t.is(_deepEqual(actual, [
     'khirayama', 27
   ]), true);
-  t.is(_deepEqual(value, [
+  t.is(_deepEqual(actual, [
     'khirayama', '27'
   ]), false);
-  t.is(_deepEqual(value, [
+  t.is(_deepEqual(actual, [
     'khirayama', 27, 'ja'
   ]), false);
 });
 
 test('_deepEqual > object array', t => {
-  const value = [{
+  const actual = [{
     name: 'khirayama',
     age: 27,
     skills: ['javascript', 'other'],
@@ -106,7 +106,7 @@ test('_deepEqual > object array', t => {
     status: {language: 'en'}
   }];
 
-  t.is(_deepEqual(value, [{
+  t.is(_deepEqual(actual, [{
     name: 'khirayama',
     age: 27,
     skills: ['javascript', 'other'],
@@ -117,7 +117,7 @@ test('_deepEqual > object array', t => {
     skills: ['ruby', 'other'],
     status: {language: 'en'}
   }]), true);
-  t.is(_deepEqual(value, [{
+  t.is(_deepEqual(actual, [{
     name: 'khirayama',
     age: 27,
     skills: ['javascript', 'other'],
@@ -128,7 +128,7 @@ test('_deepEqual > object array', t => {
     skills: ['ruby', 'other'],
     status: {language: 'en'}
   }]), false);
-  t.is(_deepEqual(value, [{
+  t.is(_deepEqual(actual, [{
     name: 'khirayama',
     age: 27,
     skills: ['javascript', 'other'],
@@ -142,17 +142,17 @@ test('_deepEqual > object array', t => {
 });
 
 test('deepEqual', t => {
-  const value = {
+  const actual = {
     name: 'khirayama',
     age: 27,
   };
 
-  t.is(_deepEqual(value, {
+  t.is(_deepEqual(actual, {
     name: 'khirayama',
     age: 27,
   }), true);
   t.throws(() => {
-    _deepEqual(value, {
+    _deepEqual(actual, {
       name: 'khirayama',
       age: '27',
       birth: '02/06',
