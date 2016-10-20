@@ -1,6 +1,3 @@
-export function assert(actual, expected) {
-}
-
 export function _equal(actual, expected) {
   if (actual === expected) {
     return true;

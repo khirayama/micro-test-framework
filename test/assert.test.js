@@ -1,7 +1,6 @@
 import test from 'ava';
 
 import {
-  assert,
   equal,
   _equal,
   deepEqual,
