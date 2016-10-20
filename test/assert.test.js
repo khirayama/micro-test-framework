@@ -147,12 +147,12 @@ test('deepEqual', t => {
     age: 27,
   };
 
-  t.is(_deepEqual(actual, {
+  t.is(deepEqual(actual, {
     name: 'khirayama',
     age: 27,
   }), true);
   t.throws(() => {
-    _deepEqual(actual, {
+    deepEqual(actual, {
       name: 'khirayama',
       age: '27',
       birth: '02/06',
