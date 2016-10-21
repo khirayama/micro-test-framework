@@ -2,23 +2,21 @@ import test from 'ava';
 
 import {
   equal,
-  _equal,
-  deepEqual,
   _deepEqual
 } from '../src/assert';
-
-test('_equl', t => {
-  const actual = 'hello world';
-
-  t.is(_equal(actual, 'hello world'), true);
-  t.is(_equal(actual, 'Hello world'), false);
-});
 
 test('equl', t => {
   const actual = 'hello world';
 
   t.is(equal(actual, 'hello world'), true);
   t.throws(() => equal(actual, 'Hello world'));
+});
+
+test('_deepEqual > literal', t => {
+  const actual = 'hello world';
+
+  t.is(_deepEqual(actual, 'hello world'), true);
+  t.is(_deepEqual(actual, 'Hello world'), false);
 });
 
 test('_deepEqual > object', t => {
@@ -138,23 +136,4 @@ test('_deepEqual > object array', t => {
     skills: ['ruby', 'other'],
     status: {language: 'en'}
   }]), false);
-});
-
-test('deepEqual', t => {
-  const actual = {
-    name: 'khirayama',
-    age: 27,
-  };
-
-  t.is(deepEqual(actual, {
-    name: 'khirayama',
-    age: 27,
-  }), true);
-  t.throws(() => {
-    deepEqual(actual, {
-      name: 'khirayama',
-      age: '27',
-      birth: '02/06',
-    })
-  });
 });

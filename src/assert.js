@@ -1,12 +1,5 @@
-export function _equal(actual, expected) {
-  if (actual === expected) {
-    return true;
-  }
-  return false;
-}
-
 export function equal(actual, expected) {
-  if (!_equal(actual, expected)) {
+  if (!_deepEqual(actual, expected)) {
     throw 'error';
   } else {
     return true;
@@ -41,13 +34,5 @@ export function _deepEqual(actual, expected) {
     return actual === expected;
   } else {
     return _objEquiv(actual, expected);
-  }
-}
-
-export function deepEqual(actual, expected) {
-  if (!_deepEqual(actual, expected)) {
-    throw 'error';
-  } else {
-    return true;
   }
 }
