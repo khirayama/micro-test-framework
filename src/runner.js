@@ -25,17 +25,23 @@
 //   t.context.after = 'after';
 // });
 
+import {equal} from './assert';
+
 class Tester {
   constructor() {
     this.context = null;
   }
-  equal() {
+  equal(actual, expected) {
+    try {
+      equal(actual, expected);
+    } catch(error) {
+    }
   }
 }
 
-const test = (testName, testCase) => {
-  const tester = new tester();
-  testCase();
+const runner = (testName, testCase) => {
+  const tester = new Tester();
+  testCase(tester);
 };
 
-export default test;
+export default runner;
